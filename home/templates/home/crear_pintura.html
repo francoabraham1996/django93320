@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nueva Pintura | Galería de Arte</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #d9dde1;
+        }
+
+        .navbar {
+            background-color: #34495e !important;
+        }
+
+        .card {
+            background-color: #f1f3f5;
+            border: none;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="{% url 'home' %}">
+                Galería de Arte
+            </a>
+
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="{% url 'listar_pinturas' %}">
+                    Pinturas
+                </a>
+                <a class="nav-link" href="#">Autores</a>
+                <a class="nav-link" href="#">Galerías</a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- CONTENIDO -->
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow">
+
+                    <div class="card-header bg-dark text-white">
+                        <h2 class="mb-0">Nueva Pintura</h2>
+                    </div>
+
+                    <div class="card-body p-4">
+
+                        <h5 class="card-title mb-4">
+                            Crear Pintura
+                        </h5>
+
+                        <form method="POST">
+
+                            {% csrf_token %}
+
+                            {{ form.as_p }}
+
+                            <div class="mt-4">
+
+                                <button type="submit" class="btn btn-success">
+                                    Guardar Pintura
+                                </button>
+
+                                <a href="{% url 'listar_pinturas' %}" class="btn btn-danger">
+                                    ← Volver atrás
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
